@@ -1,2 +1,2 @@
 # holbertonschool-softy-pinko-docker
-Doin' Docker Baby
+Doin' Docker, Baby
