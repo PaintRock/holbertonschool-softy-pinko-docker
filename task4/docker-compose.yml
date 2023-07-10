@@ -1,20 +1,17 @@
+version: '3'
 services:
-  todo-app:
-    build:
-      context: ./app
-    links:
-      - todo-database
-    environment:
-      NODE_ENV: production
+  frontend:
+    build: ./frontend
     ports:
-      - 3000:3000
-
-  todo-database:
-    image: mongo:6
-    #volumes: 
-    #  - database:/data/db
+      - "9000:80"
+  backend:
+    build: ./backend
     ports:
-      - 27017:27017
-
-#volumes:
-  #database:
+      - "5252:5252"
+  proxy:
+    build: ./proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
